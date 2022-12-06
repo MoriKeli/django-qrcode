@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Products
 
-# Create your views here.
+
+def homepage_view(request):
+    
+
+    context = {'products': products}
+    return render(request, 'app/homepage.html', context)
