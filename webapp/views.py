@@ -4,7 +4,18 @@ from .models import Products
 
 
 def homepage_view(request):
-    
+    form = NewProductForm()
 
-    context = {'products': products}
+    if request.method == 'POST':
+        form = NewProductForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            messages.info(request, 'Product added successfully!')
+            return redirect('homepage')
+                
+
+    products = Products.objects.all()
+    context = {'form': form,'products': products}
     return render(request, 'app/homepage.html', context)
