@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Products
-
+from .forms import NewProductForm
 
 def homepage_view(request):
     form = NewProductForm()
