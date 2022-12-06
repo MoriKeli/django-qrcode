@@ -16,6 +16,6 @@ def homepage_view(request):
             return redirect('homepage')
                 
 
-    products = Products.objects.all()
+    products = Products.objects.all().order_by('name')
     context = {'form': form,'products': products}
     return render(request, 'app/homepage.html', context)
